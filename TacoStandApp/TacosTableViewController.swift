@@ -23,9 +23,9 @@ class TacosTableViewController: UITableViewController {
     
     private func taco() {
         
-        let populateAPI = "https://taco-stand.herokuapp.com/api/tacos"
+        let tacoAPI = "https://taco-stand.herokuapp.com/api/tacos/"
         
-        guard let url = NSURL(string: populateAPI) else {
+        guard let url = NSURL(string: tacoAPI) else {
             fatalError("Invalid URL")
         }
         
@@ -40,81 +40,82 @@ class TacosTableViewController: UITableViewController {
             
             let tacoDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
             
-            let tacoArray = tacoDictionary["tacos"]as! NSArray
+            let tacoArray = tacoDictionary["tacos"] as! NSArray;
             
             
-            
-            for item in tacoArray {
+            for taco in tacoArray {
+                let myTaco = Taco()
+                myTaco.name = taco.valueForKey("name") as! String
                 
-                let moreTacos = Taco()
-                moreTacos.name = item.valueForKey("name") as! String
-                
-                moreTacos.photo_url = item.valueForKey("photo_url") as! String
-                
-                self.tacos.append(moreTacos)
+                myTaco.photo_url = taco.valueForKey ("photo_url")as! String
                 
                 
+                myTaco.price = taco.valueForKey("price") as! String
                 
+                self.tacos.append(myTaco)
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                
-            self.tableView.reloadData()
+                self.tableView.reloadData()
                 
             })
             
             
-            
             }.resume()
-        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.tacos.count
+
     }
     
+   
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        let taco = self.tacos[indexPath.row]
         
-        let q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(q){
-            
-            guard let imageURL = NSURL(string: taco.photo_url) else {
-                fatalError("Invalid URL")
-            }
-            
-            let imageData = NSData(contentsOfURL: imageURL)
-            
-            let image = UIImage(data: imageData!)
-            dispatch_async(dispatch_get_main_queue(),{
-                
-                cell.imageView?.image = image
-                self.tableView.reloadData()
-            })
+        
+        let elTaco = self.tacos[indexPath.row]
+        
+        guard let imageURL = NSURL(string: elTaco.photo_url) else {
+            fatalError("Invalid URL")
         }
         
+        let imageData = NSData(contentsOfURL: imageURL)
         
+        let image = UIImage(data: imageData!)
         
-        cell.textLabel?.text = taco.name
+        cell.imageView?.image = image
+        
+        print(elTaco.photo_url)
+        
+        cell.textLabel?.text = elTaco.name
+        cell.detailTextLabel?.text = elTaco.price
         
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "addTaco") {
+            guard let navigationController = segue.destinationViewController as? UINavigationController else {
+                print("destinationViewController was not a UINavigationController"); return
+            }
+            guard (navigationController.viewControllers.first as? DisplayTacoViewController) != nil else {
+                print ("display error"); return
+            }
+        }
+    }
 }

@@ -10,26 +10,49 @@ import UIKit
 
 class AddTacosViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    @IBOutlet weak var tacoName: UITextField!
+    @IBOutlet weak var tacoPrice: UITextField!
+    @IBOutlet weak var tacosURL: UITextField!
 
-        // Do any additional setup after loading the view.
-    }
+   
+    
+    
+    @IBAction func close() {
+        self.dismissViewControllerAnimated(true, completion: nil)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func postButton() {
+        self.dismissViewControllerAnimated(true, completion: nil)
 
-    /*
-    // MARK: - Navigation
+        let url = "https://taco-stand.herokuapp.com/api/tacos/"
+        
+        guard let tacoURL = NSURL(string: url) else {
+            fatalError("URL incorrect")
+        }
+        
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: tacoURL)
+        request.HTTPMethod = "POST"
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let parameters = ["name":"\(tacoName.text!)","price":"\(tacoPrice.text!)","photo_url": "\(tacosURL.text!)"]
+
+  
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted)
+        
+        session.dataTaskWithRequest(request) { (data :NSData?, response :NSURLResponse?, error: NSError?) in
+            
+            
+            print("finished")
+            
+            }.resume()
+        
+        
     }
-    */
-
+    
 }

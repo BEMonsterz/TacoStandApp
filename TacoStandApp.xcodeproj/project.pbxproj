@@ -15,6 +15,7 @@
 		3360F1EA1D47CFE70090874A /* TacosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3360F1E91D47CFE70090874A /* TacosTableViewController.swift */; };
 		3360F1EC1D47CFF80090874A /* AddTacosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3360F1EB1D47CFF80090874A /* AddTacosViewController.swift */; };
 		3360F1EE1D47D0470090874A /* Taco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3360F1ED1D47D0470090874A /* Taco.swift */; };
+		3360F1F21D483D580090874A /* DisplayTacoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3360F1F11D483D580090874A /* DisplayTacoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3360F1E91D47CFE70090874A /* TacosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacosTableViewController.swift; sourceTree = "<group>"; };
 		3360F1EB1D47CFF80090874A /* AddTacosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTacosViewController.swift; sourceTree = "<group>"; };
 		3360F1ED1D47D0470090874A /* Taco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taco.swift; sourceTree = "<group>"; };
+		3360F1F11D483D580090874A /* DisplayTacoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayTacoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				3360F1E91D47CFE70090874A /* TacosTableViewController.swift */,
 				3360F1EB1D47CFF80090874A /* AddTacosViewController.swift */,
 				3360F1ED1D47D0470090874A /* Taco.swift */,
+				3360F1F11D483D580090874A /* DisplayTacoViewController.swift */,
 			);
 			path = TacoStandApp;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3360F1F21D483D580090874A /* DisplayTacoViewController.swift in Sources */,
 				3360F1EA1D47CFE70090874A /* TacosTableViewController.swift in Sources */,
 				3360F1EC1D47CFF80090874A /* AddTacosViewController.swift in Sources */,
 				3360F1DA1D47CFBD0090874A /* ViewController.swift in Sources */,

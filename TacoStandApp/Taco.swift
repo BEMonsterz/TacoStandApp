@@ -12,6 +12,6 @@ class Taco: NSObject {
 
     var name :String!
     var photo_url :String!
-    
+    var price :String!
     
 }
