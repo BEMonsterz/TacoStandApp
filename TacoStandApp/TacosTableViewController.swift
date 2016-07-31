@@ -119,24 +119,4 @@ class TacosTableViewController: UITableViewController {
             tacoInfoViewController.allTacos = tacos[indexPath!]
         }
     }
-    
-
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if (segue.identifier == "addTaco") {
-//            guard segue.destinationViewController is UINavigationController else {
-//                print("destinationViewController was not a UINavigationController"); return
-//            }
-//            if (segue.identifier == "detailTaco"){
-//             
-//                
-//                guard let destinationController = segue.destinationViewController as? DisplayTacoViewController else {
-//                    print ("display error"); return
-//                }
-//                destinationController.tacos = tacos
-//                
-//                
-//            }
-//        }
-//    }
 }
