@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Add Tacos View Controller-->
@@ -139,7 +140,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="bX7-M6-Smc" kind="presentation" id="Rh5-rf-2Ax"/>
+                                    <segue destination="bX7-M6-Smc" kind="show" identifier="detailTaco" id="Rh5-rf-2Ax"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -173,16 +174,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE8-Tg-0Az">
-                                <rect key="frame" x="248" y="191" width="105" height="21"/>
+                                <rect key="frame" x="248" y="120" width="105" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-ad-U3L">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="h6W-tP-Lfa"/>
-                                </constraints>
                                 <items>
                                     <navigationItem title="Taco Details" id="X8D-dl-XjD">
                                         <barButtonItem key="leftBarButtonItem" title="Close" id="pZD-qq-8gb">
@@ -193,11 +191,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-kW-C4h">
-                                <rect key="frame" x="80" y="234" width="440" height="235"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-kW-C4h">
+                                <rect key="frame" x="80" y="174" width="440" height="235"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-bF-qfE">
-                                <rect key="frame" x="282" y="496" width="39" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwo-bF-qfE">
+                                <rect key="frame" x="168" y="453" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -205,17 +203,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.89864382716889013" blue="0.20031719824003313" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="leading" secondItem="2jj-om-93b" secondAttribute="leading" id="Rh0-b4-Lnc"/>
-                            <constraint firstItem="oGq-ay-8YP" firstAttribute="top" secondItem="rE8-Tg-0Az" secondAttribute="bottom" constant="388" id="ZKa-g2-rvj"/>
-                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="centerX" secondItem="rE8-Tg-0Az" secondAttribute="centerX" id="brL-fY-ID1"/>
-                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="top" secondItem="2jj-om-93b" secondAttribute="top" id="rpb-Kw-kSl"/>
-                            <constraint firstAttribute="trailing" secondItem="7Xf-ad-U3L" secondAttribute="trailing" id="vQ8-Lr-Q82"/>
+                            <constraint firstItem="Dwo-bF-qfE" firstAttribute="leading" secondItem="2jj-om-93b" secondAttribute="leading" constant="168" id="6V3-jH-kLe"/>
+                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="leading" secondItem="2jj-om-93b" secondAttribute="leading" id="Cbc-S2-0wm"/>
+                            <constraint firstItem="rE8-Tg-0Az" firstAttribute="top" secondItem="YQR-L2-eeb" secondAttribute="bottom" constant="56" id="ChF-4e-NYs"/>
+                            <constraint firstItem="YQR-L2-eeb" firstAttribute="top" secondItem="7Xf-ad-U3L" secondAttribute="bottom" constant="10" id="EYf-Zf-THA"/>
+                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="centerX" secondItem="rE8-Tg-0Az" secondAttribute="centerX" id="Tev-W0-Qg7"/>
+                            <constraint firstItem="oGq-ay-8YP" firstAttribute="top" secondItem="Dwo-bF-qfE" secondAttribute="bottom" constant="126" id="W9j-Ci-rVw"/>
+                            <constraint firstItem="rE8-Tg-0Az" firstAttribute="centerX" secondItem="fLf-kW-C4h" secondAttribute="centerX" id="Wdg-BS-8VI"/>
+                            <constraint firstItem="fLf-kW-C4h" firstAttribute="leading" secondItem="2jj-om-93b" secondAttribute="leadingMargin" constant="60" id="kLp-Dd-Dkv"/>
+                            <constraint firstItem="7Xf-ad-U3L" firstAttribute="top" secondItem="2jj-om-93b" secondAttribute="top" id="sNX-3o-aeg"/>
+                            <constraint firstItem="Dwo-bF-qfE" firstAttribute="top" secondItem="fLf-kW-C4h" secondAttribute="bottom" constant="44" id="tgZ-va-7ea"/>
+                            <constraint firstAttribute="trailing" secondItem="7Xf-ad-U3L" secondAttribute="trailing" id="xG8-dq-zWn"/>
+                            <constraint firstItem="fLf-kW-C4h" firstAttribute="top" secondItem="rE8-Tg-0Az" secondAttribute="bottom" constant="33" id="yNP-Vs-Ckd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tacoName" destination="rE8-Tg-0Az" id="Ryu-kD-9JH"/>
-                        <outlet property="tacoPrice" destination="Dwo-bF-qfE" id="Rg6-Th-78V"/>
-                        <outlet property="tacosURL" destination="fLf-kW-C4h" id="Mfj-nd-KKC"/>
+                        <outlet property="tacosName" destination="rE8-Tg-0Az" id="klm-fV-twF"/>
+                        <outlet property="tacosPrice" destination="Dwo-bF-qfE" id="rAN-c2-v9d"/>
+                        <outlet property="tacosURL" destination="fLf-kW-C4h" id="gsI-FK-oIS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rD-Uo-RA8" userLabel="First Responder" sceneMemberID="firstResponder"/>

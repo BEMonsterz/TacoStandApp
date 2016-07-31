@@ -9,24 +9,48 @@
 import UIKit
 
 class DisplayTacoViewController: UIViewController {
-
+    var allTacos = Taco()
     
-    @IBOutlet weak var tacoName: UILabel!
-    @IBOutlet weak var tacoPrice: UILabel!
+    
+    @IBOutlet weak var tacosName: UILabel!
+    @IBOutlet weak var tacosPrice: UILabel!
     @IBOutlet weak var tacosURL: UIImageView!
 
     
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
+        
+        
+        
+        self.tacosName.text = self.allTacos.name
+        self.tacosPrice.text = self.allTacos.price
+        
+        
+        let tacosURL = NSURL(string: self.allTacos.photo_url)
+        let imageData = NSData(contentsOfURL: tacosURL!)
+        let tacoImage = UIImage(data: imageData!)
+        
+        self.tacosURL.image = tacoImage
+        
+        
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//        print(tacos)
+           }
+    
+//    func getImage(atURL urlString: String) -> UIImage! {
+//        guard let url = NSURL(string: urlString) else {
+//            print("String(\(urlString)) did not contain a valid URL"); return nil
+//        }
+//        guard let data = NSData(contentsOfURL: url) else {
+//            print("TacoDetailTableViewController: Did not find image data at the URL\(url.description)"); return nil
+//        }
+//        let image = UIImage(data: data)
+//        return image
+//    }
+//    
+    
     
     @IBAction func close() {
     

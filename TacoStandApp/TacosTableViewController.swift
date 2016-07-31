@@ -108,14 +108,35 @@ class TacosTableViewController: UITableViewController {
         return cell
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "addTaco") {
-            guard let navigationController = segue.destinationViewController as? UINavigationController else {
-                print("destinationViewController was not a UINavigationController"); return
-            }
-            guard (navigationController.viewControllers.first as? DisplayTacoViewController) != nil else {
-                print ("display error"); return
-            }
+        
+        if (segue.identifier == "detailTaco"){
+            let tacoInfoViewController = segue.destinationViewController as! DisplayTacoViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            
+            tacoInfoViewController.allTacos = tacos[indexPath!]
         }
     }
+    
+
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if (segue.identifier == "addTaco") {
+//            guard segue.destinationViewController is UINavigationController else {
+//                print("destinationViewController was not a UINavigationController"); return
+//            }
+//            if (segue.identifier == "detailTaco"){
+//             
+//                
+//                guard let destinationController = segue.destinationViewController as? DisplayTacoViewController else {
+//                    print ("display error"); return
+//                }
+//                destinationController.tacos = tacos
+//                
+//                
+//            }
+//        }
+//    }
 }
