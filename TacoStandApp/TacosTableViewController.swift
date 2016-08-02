@@ -101,13 +101,13 @@ class TacosTableViewController: UITableViewController {
             fatalError("Invalid URL")
         }
         
-//        let imageData = NSData(contentsOfURL: imageURL)
-//        
-//        let image = UIImage(data: imageData!)
-//        
-//        cell.imageView?.image = image
-//        
-//        print(elTaco.photo_url)
+        let imageData = NSData(contentsOfURL: imageURL)
+        
+        let image = UIImage(data: imageData!)
+        
+        cell.imageView?.image = image
+        
+        print(elTaco.photo_url)
         
         cell.textLabel?.text = elTaco.name
         cell.detailTextLabel?.text = elTaco.price
