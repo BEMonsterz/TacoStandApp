@@ -20,7 +20,7 @@ class AddTacosViewController: UIViewController {
     
     @IBAction func close() {
         self.dismissViewControllerAnimated(true, completion: nil)
-
+NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
     }
     
     
@@ -51,8 +51,8 @@ class AddTacosViewController: UIViewController {
             print("finished")
             
             }.resume()
-        
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+
     }
     
 }

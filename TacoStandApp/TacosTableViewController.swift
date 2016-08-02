@@ -14,8 +14,7 @@ class TacosTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(TacosTableViewController.tableReloaded(_:)), name: "reload", object: nil)
         taco()
         
         
@@ -65,6 +64,13 @@ class TacosTableViewController: UITableViewController {
     }
     
     
+    func tableReloaded(notfication: NSNotification) {
+        
+        taco()
+        
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,6 +83,7 @@ class TacosTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return self.tacos.count
 
     }
@@ -94,18 +101,20 @@ class TacosTableViewController: UITableViewController {
             fatalError("Invalid URL")
         }
         
-        let imageData = NSData(contentsOfURL: imageURL)
-        
-        let image = UIImage(data: imageData!)
-        
-        cell.imageView?.image = image
-        
-        print(elTaco.photo_url)
+//        let imageData = NSData(contentsOfURL: imageURL)
+//        
+//        let image = UIImage(data: imageData!)
+//        
+//        cell.imageView?.image = image
+//        
+//        print(elTaco.photo_url)
         
         cell.textLabel?.text = elTaco.name
         cell.detailTextLabel?.text = elTaco.price
         
+
         return cell
+        
     }
     
     
